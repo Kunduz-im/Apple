@@ -29,10 +29,6 @@ dependencies {
     implementation("com.github.javafaker:javafaker:1.0.2")
     implementation("org.aeonbits.owner:owner:1.0.12")
     implementation("io.rest-assured:rest-assured:6.0.0")
-    implementation("org.apache.logging.log4j:log4j-core:2.25.3")
-    implementation("org.slf4j:slf4j-api:2.0.17")
-    implementation("org.apache.logging.log4j:log4j-slf4j2-impl:2.25.3")
-    implementation("org.apache.logging.log4j:log4j-api:2.25.3")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.21.2")
     implementation("org.postgresql:postgresql:42.7.2")
     implementation("commons-dbutils:commons-dbutils:1.8.1")
@@ -58,6 +54,9 @@ dependencies {
     // Source: https://mvnrepository.com/artifact/commons-dbutils/commons-dbutils
     implementation("commons-dbutils:commons-dbutils:1.8.1")
 
+    implementation("org.slf4j:slf4j-api:2.0.9")
+    implementation("ch.qos.logback:logback-classic:1.4.11") // ← это провайдер для SLF4J
+
 
 }
 
@@ -72,4 +71,5 @@ tasks.register<Test>("apiAndUiTest") {
     testClassesDirs = sourceSets["test"].output.classesDirs
     classpath = sourceSets["test"].runtimeClasspath
     outputs.upToDateWhen { false }
+    systemProperty("chromeoptions.args", "--headless=new")  // добавь эту строку
 }
