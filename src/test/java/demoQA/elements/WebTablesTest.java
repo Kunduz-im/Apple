@@ -11,6 +11,7 @@ import java.util.List;
 public class WebTablesTest extends BaseDemoQATest {
 
     @Test
+    @Tag("REGRESSION")
     void  webTablesTest (){
         driver.get("https://demoqa.com/webtables");
 

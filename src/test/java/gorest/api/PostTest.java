@@ -18,11 +18,13 @@ public class PostTest {
     PostController postController = new PostController(baseUrl);
 
     @Test
+    @Tag("SMOKE")
     void getAllPostsTest() {
        postController.getAllPosts();
     }
 
     @Test
+    @Tag("REGRESSION")
     void fullPostCrudTest(){
         User user = userController.createNewUser(UserGenerator.randomUser());
 

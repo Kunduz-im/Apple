@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 public class BrowserWindowsTest extends BaseDemoQATest {
 
     @Test
+    @Tag("REGRESSION")
     void browserWindowsTest(){
         driver.get("https://demoqa.com/browser-windows");
         browserWindowsPage.clickTabBtn();

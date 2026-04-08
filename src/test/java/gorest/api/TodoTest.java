@@ -18,11 +18,13 @@ public class TodoTest {
     ToDoController toDoController = new ToDoController(ConfigurationManager.getBadeConfig().gorestBaseUrl());
 
     @Test
+    @Tag("SMOKE")
     void getAllTodosTest() {
         toDoController.getAllTodos();
     }
 
     @Test
+    @Tag("REGRESSION")
     void fullTodoCrudTest(){
         //Todo привязан к пользователю — сначала создаём юзера
         User user = userController.createNewUser(UserGenerator.randomUser());

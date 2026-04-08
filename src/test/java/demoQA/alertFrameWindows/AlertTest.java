@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 public class AlertTest extends BaseDemoQATest {
 
     @Test
+    @Tag("SMOKE")
     void alertTest(){
         driver.get("https://demoqa.com/alerts");
         alertsPage.clickAlertBtn();

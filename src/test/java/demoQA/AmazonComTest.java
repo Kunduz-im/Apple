@@ -17,6 +17,7 @@ import java.util.List;
 public class AmazonComTest{
 
     @Test
+    @Tag("REGRESSION")
     void amazonTest() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -41,6 +42,7 @@ public class AmazonComTest{
 
 
     @Test
+    @Tag("REGRESSION")
     void amazonTestGBT() { //ничего не понятно
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();

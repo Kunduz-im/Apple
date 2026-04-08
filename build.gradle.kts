@@ -73,3 +73,65 @@ tasks.register<Test>("apiAndUiTest") {
     outputs.upToDateWhen { false }
     systemProperty("chromeoptions.args", "--headless=new")  // добавь эту строку
 }
+
+
+tasks.register<Test>("smokeTest") {
+    useJUnitPlatform {
+        includeTags("SMOKE")
+    }
+    testClassesDirs = sourceSets["test"].output.classesDirs
+    classpath = sourceSets["test"].runtimeClasspath
+    systemProperty("chromeoptions.args", "--headless=new")
+    outputs.upToDateWhen { false }
+}
+
+
+tasks.register<Test>("regressionTest") {
+    useJUnitPlatform {
+        includeTags("REGRESSION")
+    }
+    testClassesDirs = sourceSets["test"].output.classesDirs
+    classpath = sourceSets["test"].runtimeClasspath
+    systemProperty("chromeoptions.args", "--headless=new")
+    outputs.upToDateWhen { false }
+}
+
+tasks.register<Test>("apiTest") {
+    useJUnitPlatform {
+        includeTags("API")
+    }
+}
+
+tasks.register<Test>("uiTest") {
+    useJUnitPlatform {
+        includeTags("UI")
+    }
+}
+
+tasks.register<Test>("apiSmokeTest") {
+    useJUnitPlatform {
+        includeTags("SMOKE", "API")
+        excludeTags("REGRESSION")
+    }
+}
+
+tasks.register<Test>("uiSmokeTest") {
+    useJUnitPlatform {
+        includeTags("SMOKE", "UI")
+        excludeTags("REGRESSION")
+    }
+}
+
+tasks.register<Test>("apiRegressionTest") {
+    useJUnitPlatform {
+        includeTags("API", "REGRESSION")
+        excludeTags("SMOKE")
+    }
+}
+
+tasks.register<Test>("uiRegressionTest") {
+    useJUnitPlatform {
+        includeTags("UI", "REGRESSION")
+        excludeTags("SMOKE")
+    }
+}

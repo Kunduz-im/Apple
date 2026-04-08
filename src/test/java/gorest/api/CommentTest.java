@@ -22,11 +22,13 @@ public class CommentTest {
     CommentController commentController = new CommentController(baseUrl);
 
     @Test
+    @Tag("SMOKE")
     void getAllCommentsTest() {
        commentController.getAllComments();
     }
 
     @Test
+    @Tag("REGRESSION")
     void fullCommentCrudTest(){
         // Comment → Post → User (иерархия зависимостей)
         User user = userController.createNewUser(UserGenerator.randomUser());

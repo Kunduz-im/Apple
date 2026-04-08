@@ -9,6 +9,7 @@ public class PracticeFormTest extends BaseDemoQATest {
 
     //2 вариант
     @Test
+    @Tag("SMOKE")
     void practiceFormTest1(){
         driver.get("https://demoqa.com/automation-practice-form");
         UserPracticeForm userPracticeForm = RandomUtils.generatePracticeFormUser();
@@ -17,6 +18,7 @@ public class PracticeFormTest extends BaseDemoQATest {
 
     //первый вариант
     @Test
+    @Tag("SMOKE")
     void practiceFormTest2(){
         driver.get("https://demoqa.com/automation-practice-form");
         UserPracticeForm userPracticeForm = new UserPracticeForm("Kunduz",
@@ -28,6 +30,7 @@ public class PracticeFormTest extends BaseDemoQATest {
 
 
     @Test //третий тест с календарем
+    @Tag("SMOKE")
     void practiceFormTest3(){
         driver.get("https://demoqa.com/automation-practice-form");
         practiceFormPage.fillUserFirstName("Kunduz").fillUserLastName("Imankulova")
