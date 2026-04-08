@@ -1,17 +1,20 @@
 pipeline {
     agent any
 
-    // tools блок удаляем полностью!
-
     parameters {
         choice(
             name: 'TEST_SUITE',
             choices: ['smoke', 'regression', 'e2e', 'all'],
-            description: 'Выберите какие тесты запустить'
+            description: 'Выберите набор тестов'
+        )
+        string(
+            name: 'SINGLE_TEST',
+            defaultValue: '',
+            description: 'Запустить конкретный тест по имени (например: TC 001). Если заполнено — TEST_SUITE игнорируется'
         )
         string(
             name: 'BRANCH',
-            defaultValue: 'main',
+            defaultValue: 'master',
             description: 'Укажите ветку для запуска тестов'
         )
     }
@@ -29,7 +32,10 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    if (params.TEST_SUITE == 'smoke') {
+                    if (params.SINGLE_TEST?.trim()) {
+                        // Если указан конкретный тест — запускаем только его
+                        bat "gradlew.bat clean test --tests \"${params.SINGLE_TEST}\""
+                    } else if (params.TEST_SUITE == 'smoke') {
                         bat 'gradlew.bat clean smokeTest'
                     } else if (params.TEST_SUITE == 'regression') {
                         bat 'gradlew.bat clean regressionTest'

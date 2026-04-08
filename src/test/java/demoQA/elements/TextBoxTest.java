@@ -9,7 +9,7 @@ public class TextBoxTest extends BaseDemoQATest {
 
 
     @Test
-    @Tag("SMOKE")
+    @Tag("TextBoxTest")
     void textBoxTest(){
         UserTextBox userTextBox = new UserTextBox("Kunduz", "kuky@gmail.com",
                 "Karaganda 85",
