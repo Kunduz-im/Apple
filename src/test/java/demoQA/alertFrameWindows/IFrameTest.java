@@ -8,6 +8,7 @@ public class IFrameTest extends BaseDemoQATest {
 
 
     @Test
+    @Tag("REGRESSION")
     void iFrameTest(){
         driver.get("https://demoqa.com/frames");
         iframeHelper.switchToFrame("frame1"); //если не было переключение между фраймами
@@ -19,6 +20,7 @@ public class IFrameTest extends BaseDemoQATest {
 
 
     @Test
+    @Tag("REGRESSION")
     void iFrameTest2(){
         driver.get("https://demoqa.com/frames");
         iframeHelper.switchToFrame("frame2");
@@ -27,6 +29,7 @@ public class IFrameTest extends BaseDemoQATest {
     }
 
     @Test
+    @Tag("REGRESSION")
     void iFrameTest3(){
         driver.get("https://demoqa.com/frames");
         iframeHelper.switchToFrame("frame1");

@@ -17,11 +17,13 @@ public class UsersTest {
 
 
     @Test
+    @Tag("SMOKE")
     void getAllUsersTest() {
         userController.getAllUsers();
     }
 
     @Test
+    @Tag("REGRESSION")
     void fullUserCrudTest() {
 
         // CREATE — создаём пользователя со случайными данными

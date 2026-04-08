@@ -36,6 +36,7 @@ public class EndToEndTest {
 
     @Test
     @DisplayName("E2E: create user->create post-> create comment-> create todo -> delete user")
+    @Tag("E2E")
     void shouldPerformFullUserWorkflowFromCreationToDeletion(){
 
         User user = UserGenerator.randomUser();
@@ -56,6 +57,7 @@ public class EndToEndTest {
     }
 
     @Test
+    @Tag("REGRESSION")
     void exportUsersToCsvTest(){
         User [] users = userController.getAllUsers();
         System.out.println("Получено пользователей: " + users.length);
