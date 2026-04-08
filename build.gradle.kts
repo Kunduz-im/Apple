@@ -75,7 +75,7 @@ fun Test.configureTask(tags: String, headless: Boolean = false) {
 tasks.register<Test>("apiAndUiTest") { configureTask("API | UI", headless = true) }
 tasks.register<Test>("smokeTest")    { configureTask("SMOKE", headless = true) }
 tasks.register<Test>("regressionTest") { configureTask("REGRESSION", headless = true) }
-tasks.register<Test>("e2e") { configureTask("E2E", headless = true) }
+tasks.register<Test>("e2eTest") { configureTask("E2E", headless = true) }
 tasks.register<Test>("apiTest")      { configureTask("API") }
 tasks.register<Test>("uiTest")       { configureTask("UI") }
 
@@ -114,15 +114,6 @@ tasks.register<Test>("uiRegressionTest") {
     useJUnitPlatform {
         includeTags("UI", "REGRESSION")
         excludeTags("SMOKE")
-    }
-    testClassesDirs = sourceSets["test"].output.classesDirs
-    classpath = sourceSets["test"].runtimeClasspath
-    outputs.upToDateWhen { false }
-}
-
-tasks.register<Test>("E2ETest") {
-    useJUnitPlatform {
-        includeTags("E2E")
     }
     testClassesDirs = sourceSets["test"].output.classesDirs
     classpath = sourceSets["test"].runtimeClasspath
