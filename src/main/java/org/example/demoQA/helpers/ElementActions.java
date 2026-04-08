@@ -83,17 +83,13 @@ public class ElementActions {
     }
 
 
-    // 1. Настройка FluentWait каждые 2 секунды проверять появился ли элементы
-    Wait<WebDriver> wait = new FluentWait<>(DriverManager.getDriver())
-            .withTimeout(Duration.ofSeconds(30))       // Максимальное время ожидания
-            .pollingEvery(Duration.ofSeconds(2))     // Частота проверки
-            .ignoring(NoSuchElementException.class)    // Игнорируемое исключение
-            .withMessage("Элемент не найден после 30 секунд ожидания"); // Кастомное сообщение
+    public WebElement waitForDynamicElement(String elementId) {
+        Wait<WebDriver> wait = new FluentWait<>(DriverManager.getDriver())
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(2))
+                .ignoring(NoSuchElementException.class)
+                .withMessage("Элемент не найден после 30 секунд ожидания");
 
-    // 2. Использование до нахождения элемента (а здесь, условия для объекта wait)
-    WebElement element = wait.until(new Function<WebDriver, WebElement>() {
-        public WebElement apply(WebDriver driver) {
-            return driver.findElement(By.id("dynamicElement"));
-        }
-    });
+        return wait.until(driver -> driver.findElement(By.id(elementId)));
+    }
 }

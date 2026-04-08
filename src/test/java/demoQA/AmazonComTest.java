@@ -20,17 +20,23 @@ public class AmazonComTest{
     void amazonTest() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.get("https://www.amazon.com");
 
-        Thread.sleep(5000);
-        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Iphone" + Keys.RETURN);
-        Thread.sleep(3000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("twotabsearchtextbox")))
+                        .sendKeys("Iphone" + Keys.RETURN);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#brandsRefinements ul li a")));
 
         int count = driver.findElements(By.cssSelector("#brandsRefinements ul li a")).size();
-        List<WebElement> brands = driver.findElements(By.cssSelector("#brandsRefinements ul li a"));
-        for (WebElement brand : brands){
-            brand.click();
+
+        for (int i = 0; i < count; i++) {
+            List<WebElement> brands = driver.findElements(By.cssSelector("#brandsRefinements ul li a"));
+            brands.get(i).click();
+            wait.until(ExpectedConditions.stalenessOf(brands.get(i)));
         }
+        driver.quit();
     }
 
 

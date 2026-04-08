@@ -25,10 +25,10 @@ public class TextBoxPage extends BasePage {
     @FindBy(id = "userEmail")
     private WebElement userEmail;
 
-    @FindBy(css = "p#currentAddress")
+    @FindBy(id = "currentAddress")
     private WebElement displayedCurrentAddress;
 
-    @FindBy(css = "p#permanentAddress")
+    @FindBy(id = "permanentAddress")
     private WebElement displayedPermanentAddress;
 
     @FindBy(id = "submit")
