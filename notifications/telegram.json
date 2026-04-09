@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "${JOB_BASE_NAME}",
+    "environment": "gorest.co.in",
+    "comment": "Результаты тестов",
+    "reportLink": "${BUILD_URL}",
+    "language": "ru",
+    "messenger": "telegram",
+    "allureFolder": "build/allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "8761482020:AAH3gi7J8H7peTaTocQnzKt66uA9-pwVik0",
+    "chat": "-1003942429780",
+    "replyTo": ""
+  }
+}
